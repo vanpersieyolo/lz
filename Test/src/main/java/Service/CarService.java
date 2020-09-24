@@ -37,8 +37,8 @@ public class CarService implements ICarService{
         return connection;
     }
     @Override
-    public Car add(Car car) throws SQLException {
-        return null;
+    public boolean add(Car car) throws SQLException {
+        return false;
     }
 
     @Override
