@@ -29,6 +29,12 @@ public class CarServlet extends HttpServlet {
                case "add":
                    insertCar(request,response);
                    break;
+               case "search":
+                   searchBy(request,response);
+                   break;
+               default:
+                   selectAll(request,response);
+                   break;
            }
        }catch (SQLException e){
            e.printStackTrace();
@@ -74,6 +80,19 @@ public class CarServlet extends HttpServlet {
         String carDescription = request.getParameter("carDescription");
         Car newCar =new Car(carName,carImg,carPrice,carDescription);
         carService.add(newCar);
+        RequestDispatcher rq = request.getRequestDispatcher("/View/HomePage.jsp");
+        rq.forward(request, response);
+    }
+    protected void searchBy(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+        List<Car> carList = carService.selectAll();
+        List<Car> cars = new ArrayList<>();
+        String search = request.getParameter("search");
+        for (Car car : carList){
+            if (car.getCarName().contains(search) || car.getDescription().contains(search)){
+                cars.add(car);
+            }
+        }
+        request.setAttribute("carlist",cars);
         RequestDispatcher rq = request.getRequestDispatcher("/View/HomePage.jsp");
         rq.forward(request, response);
     }

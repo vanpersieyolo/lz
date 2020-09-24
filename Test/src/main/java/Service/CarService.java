@@ -9,8 +9,9 @@ import java.util.List;
 public class CarService implements ICarService {
     private String jdbcURL = "jdbc:mysql://localhost:3306/SellCar?useSSL=false";
     private String jdbcUsername = "root";
+    private String jdbcPassword = "danganhvan";
+//    private String jdbcPassword = "123456";
 //    private String jdbcPassword = "djenha88";
-        private String jdbcPassword = "123456";
 
     public CarService() {
 
@@ -96,7 +97,6 @@ public class CarService implements ICarService {
 
     @Override
     public List<Car> findByAll(String text) {
-
         return null;
     }
 }
