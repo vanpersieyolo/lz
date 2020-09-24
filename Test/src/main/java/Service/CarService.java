@@ -11,7 +11,8 @@ import java.util.List;
 public class CarService implements ICarService{
     private String jdbcURL = "jdbc:mysql://localhost:3306/sellcar?useSSL=false";
     private String jdbcUsername = "root";
-    private String jdbcPassword = "123456";
+    private String jdbcPassword = "djenha88";
+//    private String jdbcPassword = "123456";
     private static final String INSERT_USERS_SQL = "INSERT INTO car" + "  (car_Name,car_Img,car_Price,car_Description) VALUES " +" (?, ?, ?, ?);";
     private static final String SELECT_USER_BY_ID = "select * from car where id =" + "?;";
     private static final String SELECT_ALL_USERS = "select * from car";
@@ -45,12 +46,12 @@ public class CarService implements ICarService{
     }
 
     @Override
-    public boolean RemoveCar() throws SQLException {
+    public boolean RemoveCar(int id) throws SQLException {
         return false;
     }
 
     @Override
-    public boolean UpdateCar() throws SQLException {
+    public boolean UpdateCar(Car car) throws SQLException {
         return false;
     }
 

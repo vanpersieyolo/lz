@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface ICarService {
     Car add (Car car) throws SQLException;
-    List <Car>selectAll();
-    boolean RemoveCar() throws SQLException;
-    boolean UpdateCar() throws SQLException;
+    List<Car> selectAll();
+    boolean RemoveCar(int id) throws SQLException;
+    boolean UpdateCar(Car car) throws SQLException;
     Car CarFindAll(String text);
 }
