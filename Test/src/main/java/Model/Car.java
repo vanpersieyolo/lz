@@ -14,7 +14,12 @@ public class Car {
         this.description = description;
         this.id = id;
     }
-
+    public Car(String carName, String carImg, String carPrice, String description) {
+        this.carName = carName;
+        this.carImg = carImg;
+        this.carPrice = carPrice;
+        this.description = description;
+    }
 
     public String getCarName() {
         return carName;

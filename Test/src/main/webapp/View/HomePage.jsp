@@ -53,7 +53,7 @@
         </a>
     </div>
     <div class="container">
-        <a href="#">Trở về trang trước</a>
+        <a href="/cars?action=">Trở về trang trước</a>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
             Thêm mới 1 sản phẩm
         </button>
@@ -62,22 +62,22 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <div class="container">
-                            <form>
+                            <form action="/cars?action=add" method="post">
                                 <div class="form-group">
                                     <label>nhập tên xe</label>
-                                    <input type="text" class="form-control"  placeholder="Tên xe">
+                                    <input type="text" class="form-control"  name="carName" placeholder="Tên xe">
                                 </div>
                                 <div class="form-group">
                                     <label>Nhập link ảnh</label>
-                                    <input type="text" class="form-control" placeholder="File ảnh xe">
+                                    <input type="text" class="form-control" name="carImg" placeholder="File ảnh xe">
                                 </div>
                                 <div class="form-group">
                                     <label>Nhập giá bán</label>
-                                    <input type="text" class="form-control"  placeholder="Giá bán xe">
+                                    <input type="text" class="form-control" name="carPrice"  placeholder="Giá bán xe">
                                 </div>
                                 <div class="form-group">
                                     <label >Chi tiết xe</label>
-                                    <input type="text" class="form-control"  placeholder="Nhập chi tiết xe">
+                                    <input type="text" class="form-control" name="carDescription"  placeholder="Nhập chi tiết xe">
                                 </div>
                                 <button type="submit" class="btn btn-primary">ADD</button>
                             </form>
@@ -92,7 +92,7 @@
         <h1 style="text-align: center">Bảng giá các loại xe</h1>    
         <div class="row">
             <c:forEach var = "car" items="${carlist}">
-                <div class="col-md-6 col-lg-4">
+                <div class="col-md-6 col-lg-4" style="margin-top: 30px">
                     <div class="single_service">
                         <div class="thumb">
                             <span><img src="<c:out value="${car.carImg}"/>" style="width: 100%"></span>

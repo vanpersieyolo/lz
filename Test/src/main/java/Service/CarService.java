@@ -4,7 +4,6 @@ import Model.Car;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class CarService implements ICarService {
@@ -12,12 +11,6 @@ public class CarService implements ICarService {
     private String jdbcUsername = "root";
 //    private String jdbcPassword = "djenha88";
         private String jdbcPassword = "123456";
-//    private static final String INSERT_USERS_SQL = "INSERT INTO car" + "  (car_Name,car_Img,car_Price,car_Description) VALUES " + " (?, ?, ?, ?);";
-//    private static final String SELECT_USER_BY_ID = "select * from car where id =" + "?;";
-//    private static final String SELECT_ALL_USERS = "select * from car";
-//    private static final String DELETE_USERS_SQL = "delete from car where id = ?;";
-//    private static final String UPDATE_USERS_SQL = "update car set car_Name = ?,car_Img= ?, car_Price =?,car_Description where id = " + "?;";
-//    private static final String SELECT_USERS_ORDER_NAME = "select * from car order by car_Name ;";
 
     public CarService() {
 
@@ -35,10 +28,8 @@ public class CarService implements ICarService {
         }
         return connection;
     }
-
     @Override
     public boolean add(Car car) throws SQLException {
-<<<<<<< HEAD
         boolean check = false;
         String query = "{call insert_car(?,?,?,?)}";
 
@@ -52,10 +43,9 @@ public class CarService implements ICarService {
             e.printStackTrace();
         }
         return check;
-=======
-        return false;
->>>>>>> 387c7d0cd755a063548c2f5a306cdd720370a4ec
+
     }
+
 
     @Override
     public List<Car> selectAll() throws SQLException {
@@ -79,11 +69,7 @@ public class CarService implements ICarService {
 
     @Override
     public boolean removeCar(int id) throws SQLException {
-<<<<<<< HEAD
         boolean removeComplete = false;
-=======
-        boolean removeComplete;
->>>>>>> a07c12bcadd1360eb76224b9d2bf00cfddd9016f
         String query = "{call delete_car(?)}";
         try (Connection connection = getConnection();
              CallableStatement callableStatement = connection.prepareCall(query)) {
@@ -103,22 +89,14 @@ public class CarService implements ICarService {
             callableStatement.setString(3, car.getCarImg());
             callableStatement.setString(4, car.getCarPrice());
             callableStatement.setString(5, car.getDescription());
-
-<<<<<<< HEAD
-        return false;
-    }
-
-    public void check() {
-
-=======
-            updateComplete = callableStatement.executeUpdate()>0;
+            return false;
         }
-        return updateComplete;
->>>>>>> a07c12bcadd1360eb76224b9d2bf00cfddd9016f
     }
+
 
     @Override
-    public Car findByAll(String text) {
+    public List<Car> findByAll(String text) {
+
         return null;
     }
 }

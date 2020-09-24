@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,20 @@ import java.util.List;
 public class CarServlet extends HttpServlet {
     CarService carService = new CarService();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+       String acction = request.getParameter("action");
+
+       if (acction == null){
+           acction ="";
+       }
+       try{
+           switch (acction){
+               case "add":
+                   insertCar(request,response);
+                   break;
+           }
+       }catch (SQLException e){
+           e.printStackTrace();
+       }
 
     }
 
@@ -28,8 +43,6 @@ public class CarServlet extends HttpServlet {
             action = "";
         }
         switch (action) {
-            case "create":
-                break;
             case "edit":
                 break;
             case "search":
@@ -53,5 +66,15 @@ public class CarServlet extends HttpServlet {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    protected void insertCar (HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+        String carName = request.getParameter("carName");
+        String carImg = request.getParameter("carImg");
+        String carPrice = request.getParameter("carPrice");
+        String carDescription = request.getParameter("carDescription");
+        Car newCar =new Car(carName,carImg,carPrice,carDescription);
+        carService.add(newCar);
+        RequestDispatcher rq = request.getRequestDispatcher("/View/HomePage.jsp");
+        rq.forward(request, response);
     }
 }
