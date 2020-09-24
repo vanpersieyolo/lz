@@ -48,7 +48,7 @@ public class CarService implements ICarService{
 
     @Override
     public boolean removeCar(int id) throws SQLException {
-        boolean removeComplete =false;
+        boolean removeComplete;
         String query = "{call delete_car(?)}";
         try(Connection connection = getConnection();
             CallableStatement callableStatement =connection.prepareCall(query)) {
@@ -60,12 +60,20 @@ public class CarService implements ICarService{
 
     @Override
     public boolean updateCar(Car car) throws SQLException {
+        boolean updateComplete;
+        String query ="{call update_car(?,?,?,?,?)}";
+        try(Connection connection = getConnection(); CallableStatement callableStatement = connection.prepareCall(query);) {
+            callableStatement.setInt(1, car.getId());
+            callableStatement.setString(2, car.getCarName());
+            callableStatement.setString(3, car.getCarImg());
+            callableStatement.setString(4, car.getCarPrice());
+            callableStatement.setString(5, car.getDescription());
 
-        return false;
+            updateComplete = callableStatement.executeUpdate()>0;
+        }
+        return updateComplete;
     }
-    public void check(){
-        
-    }
+
     @Override
     public Car findByAll(String text) {
         return null;

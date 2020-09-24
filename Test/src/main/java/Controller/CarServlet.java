@@ -11,7 +11,11 @@ import java.io.IOException;
 @WebServlet("/cars")
 public class CarServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        String action = request.getParameter("action");
+        if (action == null){
+            action = "";
+        }
+        switch ()
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
