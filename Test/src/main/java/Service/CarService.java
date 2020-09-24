@@ -2,6 +2,7 @@ package Service;
 
 import Model.Car;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -23,7 +24,7 @@ public class CarService implements ICarService{
 
     }
 
-    protected Connection connection () throws SQLException {
+    protected Connection getConnection () throws SQLException {
         Connection connection = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -46,17 +47,24 @@ public class CarService implements ICarService{
     }
 
     @Override
-    public boolean RemoveCar(int id) throws SQLException {
+    public boolean removeCar(int id) throws SQLException {
+        boolean removeComplete =false;
+        String query = "{call delete_car(?)}";
+        try(Connection connection = getConnection();
+            CallableStatement callableStatement =connection.prepareCall(query)) {
+            callableStatement.setInt(1,id);
+            removeComplete = callableStatement.executeUpdate()>0;
+        }
+        return removeComplete;
+    }
+
+    @Override
+    public boolean updateCar(Car car) throws SQLException {
         return false;
     }
 
     @Override
-    public boolean UpdateCar(Car car) throws SQLException {
-        return false;
-    }
-
-    @Override
-    public Car CarFindAll(String text) {
+    public Car findByAll(String text) {
         return null;
     }
 }
