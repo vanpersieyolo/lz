@@ -54,17 +54,52 @@
     </div>
     <div class="container">
         <a href="#">Trở về trang trước</a>
-        <h1 style="text-align: center">Bảng giá các loại xe</h1>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+            Thêm mới 1 sản phẩm
+        </button>
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="container">
+                            <form>
+                                <div class="form-group">
+                                    <label>nhập tên xe</label>
+                                    <input type="text" class="form-control"  placeholder="Tên xe">
+                                </div>
+                                <div class="form-group">
+                                    <label>Nhập link ảnh</label>
+                                    <input type="text" class="form-control" placeholder="File ảnh xe">
+                                </div>
+                                <div class="form-group">
+                                    <label>Nhập giá bán</label>
+                                    <input type="text" class="form-control"  placeholder="Giá bán xe">
+                                </div>
+                                <div class="form-group">
+                                    <label >Chi tiết xe</label>
+                                    <input type="text" class="form-control"  placeholder="Nhập chi tiết xe">
+                                </div>
+                                <button type="submit" class="btn btn-primary">ADD</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h1 style="text-align: center">Bảng giá các loại xe</h1>    
         <div class="row">
-            <c:forEach var = "i" begin = "1" end = "10">
+            <c:forEach var = "car" items="${carlist}">
                 <div class="col-md-6 col-lg-4">
                     <div class="single_service">
                         <div class="thumb">
-                            <img src="../img.jpg" style="width: 362px" height="358px">
+                            <span><img src="<c:out value="${car.carImg}"/>" style="width: 100%"></span>
                         </div>
                         <div class="service_infor">
-                            <h3>Tên xe</h3>
-                            <h4>Giá xe</h4>
+                            <h3><c:out value="${car.carName}"/></h3>
+                            <h3><c:out value="${car.carPrice}"/></h3>
                             <div class="row">
                                 <div class="col-md-6 col-lg-4"><a href="#">DELETE</a></div>
                                 <div class="col-md-6 col-lg-4"><a href="#">UPDATE</a></div>
