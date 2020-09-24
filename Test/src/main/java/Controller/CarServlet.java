@@ -18,11 +18,7 @@ import java.util.List;
 public class CarServlet extends HttpServlet {
     CarService carService = new CarService();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
-        CarService carService = new CarService();
-        if (action == null) {
-            action = "";
-        }
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -57,6 +53,8 @@ public class CarServlet extends HttpServlet {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    protected void add(HttpServletRequest request, HttpServletResponse response){
 
     }
 }
