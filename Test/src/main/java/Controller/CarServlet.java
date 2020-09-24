@@ -54,7 +54,4 @@ public class CarServlet extends HttpServlet {
             e.printStackTrace();
         }
     }
-    protected void add(HttpServletRequest request, HttpServletResponse response){
-
-    }
 }

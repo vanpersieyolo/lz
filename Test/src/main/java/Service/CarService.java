@@ -38,6 +38,7 @@ public class CarService implements ICarService {
 
     @Override
     public boolean add(Car car) throws SQLException {
+<<<<<<< HEAD
         boolean check = false;
         String query = "{call insert_car(?,?,?,?)}";
 
@@ -51,6 +52,9 @@ public class CarService implements ICarService {
             e.printStackTrace();
         }
         return check;
+=======
+        return false;
+>>>>>>> 387c7d0cd755a063548c2f5a306cdd720370a4ec
     }
 
     @Override
