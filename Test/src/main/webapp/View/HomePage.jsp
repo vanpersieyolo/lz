@@ -18,7 +18,7 @@
 <nav  class="navbar navbar-expand-lg navbar-light bg-light">
     <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-            <img src="img.jpg" width="50" height="50" class="d-inline-block align-top">
+            <img src="../img.jpg" width="50" height="50" class="d-inline-block align-top">
         </li>
         <li class="nav-item active">
             <a class="nav-link" href="#"><h1>V & T SHOWROOM</h1></a>
@@ -34,13 +34,13 @@
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" >
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100" src="img.jpg" alt="First slide" style="width: 1000px ; height: 500px">
+                <img class="d-block w-100" src="../img.jpg" alt="First slide" style="width: 100% ; height: 500px">
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="img.jpg" alt="Second slide"style="width: 1000px ; height: 500px">
+                <img class="d-block w-100" src="../img.jpg" alt="Second slide" style="width: 100% ; height: 500px">
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="img.jpg" alt="Third slide"style="width: 1000px ; height: 500px">
+                <img class="d-block w-100" src="../img.jpg" alt="Third slide" style="width: 100% ; height: 500px">
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -60,7 +60,7 @@
                 <div class="col-md-6 col-lg-4">
                     <div class="single_service">
                         <div class="thumb">
-                            <img src="img.jpg" style="width: 362px" height="358px">
+                            <img src="../img.jpg" style="width: 362px" height="358px">
                         </div>
                         <div class="service_infor">
                             <h3>Tên xe</h3>
