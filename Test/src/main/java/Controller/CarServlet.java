@@ -32,6 +32,12 @@ public class CarServlet extends HttpServlet {
                case "search":
                    searchBy(request,response);
                    break;
+               case "update":
+                   updateProduct(request,response);
+                   break;
+               case "delete":
+                   deleteProduct(request,response);
+                   break;
                default:
                    selectAll(request,response);
                    break;
@@ -73,6 +79,7 @@ public class CarServlet extends HttpServlet {
             e.printStackTrace();
         }
     }
+    // chức năng thêm mới
     protected void insertCar (HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
         String carName = request.getParameter("carName");
         String carImg = request.getParameter("carImg");
@@ -80,9 +87,9 @@ public class CarServlet extends HttpServlet {
         String carDescription = request.getParameter("carDescription");
         Car newCar =new Car(carName,carImg,carPrice,carDescription);
         carService.add(newCar);
-        RequestDispatcher rq = request.getRequestDispatcher("/View/HomePage.jsp");
-        rq.forward(request, response);
+        response.sendRedirect("/cars");
     }
+    // chức năng tìm kiếm
     protected void searchBy(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
         List<Car> carList = carService.selectAll();
         List<Car> cars = new ArrayList<>();
@@ -96,4 +103,23 @@ public class CarServlet extends HttpServlet {
         RequestDispatcher rq = request.getRequestDispatcher("/View/HomePage.jsp");
         rq.forward(request, response);
     }
+    //chức năng xóa
+    protected void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        carService.removeCar(id);
+        response.sendRedirect("/cars");
+    }
+    //chức năng update
+    protected void updateProduct(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException {
+        int id =Integer.parseInt(request.getParameter("id"));
+        String name = request.getParameter("carName");
+        String img = request.getParameter("carImg");
+        String price = request.getParameter("carPrice");
+        String description = request.getParameter("carDescription");
+        Car car = new Car(name,img,price,description,id);
+
+        carService.updateCar(car);
+        response.sendRedirect("/cars");
+    }
+
 }

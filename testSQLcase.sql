@@ -40,7 +40,7 @@ insert into cars(car_name,car_img, car_price,car_description) values (car_nameip
 end $$
 delimiter ;
 drop procedure insert_car;
-call insert_car('inova','img.jpg','1000$',' SUV');
+call insert_car('BMW','bmwx2.png','1.000.500.000VND','BMW');
 
 delimiter $$
 create procedure select_all()
@@ -49,5 +49,24 @@ select * from cars;
 end $$
 delimiter ;
 
+-- hàm sửa
+delimiter $$
+create procedure update_car(car_pro_id int,
+car_pro_name varchar(120),
+car_pro_img varchar(255),
+car_pro_price varchar(100),
+car_pro_des varchar(255))
+begin
+	update cars
+    set car_name =car_pro_name,
+    car_img=car_pro_img,
+    car_price=car_pro_price,
+    car_description = car_pro_des
+    where cars.car_id=car_pro_id;
+end $$
+delimiter ;
+drop procedure update_car;
+
 call select_all();
 delete from cars where cars.car_id = 6;
+call update_car(4,'BMW china','bmwx2.png','1.000.500.000VND','xe deu');

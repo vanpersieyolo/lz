@@ -9,9 +9,9 @@ import java.util.List;
 public class CarService implements ICarService {
     private String jdbcURL = "jdbc:mysql://localhost:3306/SellCar?useSSL=false";
     private String jdbcUsername = "root";
-    private String jdbcPassword = "danganhvan";
+//    private String jdbcPassword = "danganhvan";
 //    private String jdbcPassword = "123456";
-//    private String jdbcPassword = "djenha88";
+    private String jdbcPassword = "djenha88";
 
     public CarService() {
 
@@ -70,7 +70,7 @@ public class CarService implements ICarService {
 
     @Override
     public boolean removeCar(int id) throws SQLException {
-        boolean removeComplete = false;
+        boolean removeComplete;
         String query = "{call delete_car(?)}";
         try (Connection connection = getConnection();
              CallableStatement callableStatement = connection.prepareCall(query)) {
@@ -84,14 +84,16 @@ public class CarService implements ICarService {
     public boolean updateCar(Car car) throws SQLException {
         boolean updateComplete;
         String query ="{call update_car(?,?,?,?,?)}";
-        try(Connection connection = getConnection(); CallableStatement callableStatement = connection.prepareCall(query);) {
+        try(Connection connection = getConnection();
+            CallableStatement callableStatement = connection.prepareCall(query);) {
             callableStatement.setInt(1, car.getId());
             callableStatement.setString(2, car.getCarName());
             callableStatement.setString(3, car.getCarImg());
             callableStatement.setString(4, car.getCarPrice());
             callableStatement.setString(5, car.getDescription());
-            return false;
+            updateComplete = callableStatement.executeUpdate() >0;
         }
+        return updateComplete;
     }
 
 

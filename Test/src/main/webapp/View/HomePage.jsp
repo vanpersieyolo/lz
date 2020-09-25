@@ -118,17 +118,77 @@
                             <span><img src="<c:out value="${car.carImg}"/>" style="width: 100%"></span>
                         </div>
                         <div class="service_infor">
+                            <p ><c:out value="${car.id}"></c:out></p>
                             <h4>Tên xe: <c:out value="${car.carName}"/></h4>
                             <h4>Giá tiền: <c:out value="${car.carPrice}"/></h4>
                             <h4>Mô tả: <c:out value="${car.description}"/></h4>
                             <div class="row">
-                                <div class="col-md-6 col-lg-4"><a href="#">DELETE</a></div>
-                                <div class="col-md-6 col-lg-4"><a href="#">UPDATE</a></div>
+                                <div class="col-md-6 col-lg-4">
+                                    <a href="#" data-toggle="modal" data-target="#exampleModalDelete${car.id}">DELETE</a>
+                                    <div class="modal fade" id="exampleModalDelete${car.id}" tabindex="-1" role="dialog"
+                                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">a
+                                                    <div class="container">
+                                                        <form action="/cars?action=delete&id=<c:out value="${car.id}"></c:out>" method="post">
+                                                            <div class="form-group">
+                                                                <label>Bạn có chắc chắn muốn xóa ${car.id} chứ?</label>
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary">DELETE</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4">
+                                    <a href="/cars?action=" data-toggle="modal" data-target="#exampleModalUpdate${car.id}">UPDATE</a>
+                                    <div class="modal fade" id="exampleModalUpdate${car.id}" tabindex="-1" role="dialog"
+                                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <div class="container">
+                                                        <form action="/cars?action=update&id=${car.id}" method="post">
+                                                            <div class="form-group">
+                                                                <label>nhập tên xe</label>
+                                                                <input type="text" class="form-control" name="carName" value="<c:out value="${car.carName}"/>">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Nhập link ảnh</label>
+                                                                <input type="text" class="form-control" name="carImg" value="<c:out value="${car.carImg}"/>">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Nhập giá bán</label>
+                                                                <input type="text" class="form-control" name="carPrice" value="<c:out value="${car.carPrice}"/>">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Chi tiết xe</label>
+                                                                <input type="text" class="form-control" name="carDescription"
+                                                                       value="<c:out value="${car.description}"/>">
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary">Lưu</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-md-6 col-lg-4"><a href="#">DESCRIPTION</a></div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </c:forEach>
         </div>
     </div>
