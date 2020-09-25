@@ -27,7 +27,7 @@
 
     <form class="form-inline my-2 my-lg-0" action="/cars?action=search" method="post">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
+        <button type="button" class="btn btn-outline-secondary">TÌM KIẾM</button>
     </form>
 </nav>
 <div style=" border: black solid 1px">
@@ -118,22 +118,21 @@
                             <span><img src="<c:out value="${car.carImg}"/>" style="width: 100%"></span>
                         </div>
                         <div class="service_infor">
-                            <p ><c:out value="${car.id}"></c:out></p>
                             <h4>Tên xe: <c:out value="${car.carName}"/></h4>
                             <h4>Giá tiền: <c:out value="${car.carPrice}"/></h4>
                             <h4>Mô tả: <c:out value="${car.description}"/></h4>
                             <div class="row">
                                 <div class="col-md-6 col-lg-4">
-                                    <a href="#" data-toggle="modal" data-target="#exampleModalDelete${car.id}">DELETE</a>
+                                    <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#exampleModalDelete${car.id}">XÓA</button>
                                     <div class="modal fade" id="exampleModalDelete${car.id}" tabindex="-1" role="dialog"
                                          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
-                                                <div class="modal-header">a
+                                                <div class="modal-header">
                                                     <div class="container">
                                                         <form action="/cars?action=delete&id=<c:out value="${car.id}"></c:out>" method="post">
                                                             <div class="form-group">
-                                                                <label>Bạn có chắc chắn muốn xóa ${car.id} chứ?</label>
+                                                                <label>Bạn có chắc chắn muốn xóa chứ?</label>
                                                             </div>
                                                             <button type="submit" class="btn btn-primary">DELETE</button>
                                                         </form>
@@ -147,7 +146,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-lg-4">
-                                    <a href="/cars?action=" data-toggle="modal" data-target="#exampleModalUpdate${car.id}">UPDATE</a>
+                                    <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#exampleModalUpdate${car.id}">UPDATE</button>
                                     <div class="modal fade" id="exampleModalUpdate${car.id}" tabindex="-1" role="dialog"
                                          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -183,7 +182,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-lg-4"><a href="#">DESCRIPTION</a></div>
+                                <div class="col-md-6 col-lg-4"><button type="button" class="btn btn-outline-secondary">Secondary</button></div>
                             </div>
                         </div>
                     </div>
